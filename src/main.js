@@ -1,7 +1,10 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import cailas_page from './cailas_page.vue'
+import router from './router.js'
+import App from './app.vue'
+
 import "./style.css"
 
-createApp(App).mount('#main_page')
-createApp(cailas_page).mount('#cailas_page')
+
+createApp(App).use(router).mount('#main_page')
+//createApp(Cailas_Page).mount('#cailas_page')
+

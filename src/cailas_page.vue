@@ -1,5 +1,6 @@
 <script>
 import { activity } from './activity'
+import { RouterLink, RouterView } from 'vue-router'
 
 export default
 {
@@ -53,7 +54,7 @@ export default
 
 <template>
     <h1>Caila's Page</h1>
-
+    <RouterView />
     <table>
         <tr>
             <th>Date</th>
