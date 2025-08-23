@@ -23,9 +23,6 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
     <h1>{{ message }}</h1>
 
-    <ul>
-        <li class="horizontal_li"><RouterLink to="/cailas_page">Caila's Page</RouterLink></li>
-    </ul>
     <hr></hr>
 
     <label for="checkbox">Does this site suck? If so tick this box ==> </label>

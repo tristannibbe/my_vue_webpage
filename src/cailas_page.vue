@@ -98,11 +98,4 @@ export default
     </table>
     <button @click="construct_csv">Download</button>
 
-    <hr></hr>
-
-    <ul class="horizontal_ul">
-        <li class="horizontal_li"><a href="index.html">Return to main</a></li>
-        <li class="horizontal_li"><a href="index.html">Return to main</a></li>
-    </ul>
-
 </template>

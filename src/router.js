@@ -4,7 +4,7 @@ import Main_Page from './main_page.vue'
 import Cailas_Page from './cailas_page.vue'
 
 const routes = [
-    { path: '/main_page', component: Main_Page },
+    { path: '/', component: Main_Page },
     { path: '/cailas_page', component: Cailas_Page },
 ]
   
