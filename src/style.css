@@ -31,10 +31,15 @@ tr:hover {
     padding-right: 1em;
 }
 
-.horizontal_ul {
+.horizontal_ul
+{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-  }
-  
+}
+
+.accordion.collapse
+{
+    display: none;
+}
