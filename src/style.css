@@ -1,0 +1,39 @@
+table
+{
+    border-collapse: collapse;
+}
+
+th
+{
+    border-top: 1px solid #000000;
+
+}
+
+td, th
+{
+    padding: 8px;
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
+
+tr:hover {
+    background-color: #D6EEEE;
+} 
+
+.single_character_cell
+{
+    width: 3.5em;
+}
+
+.horizontal_li
+{
+    display: inline;
+    padding-right: 1em;
+}
+
+.horizontal_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
