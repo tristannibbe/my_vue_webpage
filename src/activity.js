@@ -27,6 +27,7 @@ export class day_of_activities
     date = ""
     total_hours = 0;
     activities = []
+    element = ""
 
     constructor (date)
     {

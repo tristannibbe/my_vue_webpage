@@ -23,7 +23,12 @@ export default
             var encodedUri = encodeURI(csvContent);
             window.open(encodedUri);
         },
-        
+
+        add_new_day()
+        {
+            this.days_of_activities.push(new day_of_activities("2025-06-03"))
+        },  
+
         toggle_row()
         {
             console.log("toggle_row enter")
@@ -31,9 +36,7 @@ export default
 
             elements.forEach(function(element)
             {
-
-                element.classList.toggle("collapse")
-                
+                element.classList.toggle("collapse")   
             })
         }
     }
@@ -43,25 +46,27 @@ export default
 <template>
 <h1>Caila's Page</h1>
 <table>
-    <tr>
-        <th>Date</th>
-        <th class="medium_cell">Location</th>
-        <th class="wide_cell">Description</th>
-        <th>Code</th>
-        <th>Participants</th>
-        <th class="single_character_cell">Hours</th>
-        <th></th>
-    </tr>
 
-    <div v-for="day in days_of_activities">
+
+    <div class="accordion_container" v-for="day in days_of_activities">
         <tr class="accordion_header">
             <td><input type="date" v-model="day.date" placeholder="Enter Date"/></td>
-            <td @click="toggle_row"></td>
-            <td @click="toggle_row" class="wide_cell"></td>
-            <td @click="toggle_row" class="single_character_cell"></td>
-            <td @click="toggle_row"></td>
-            <td @click="toggle_row"><div>Total:{{ day.total_hours }}</div></td>
+            <td class="medium_cell" @click="toggle_row"></td>
+            <td class="wide_cell" @click="toggle_row"></td>
+            <td class="single_character_cell" @click="toggle_row"></td>
+            <td class="medium_cell" @click="toggle_row"></td>
+            <td class="medium_cell" @click="toggle_row"><div>Total:{{ day.total_hours }}</div></td>
             <td><button @click="day.add_entry()">+</button></td>
+        </tr>
+
+        <tr class="accordion">
+            <th></th>
+            <th class="medium_cell">Location</th>
+            <th class="wide_cell">Description</th>
+            <th>Code</th>
+            <th class="medium_cell">Participants</th>
+            <th class="medium_cell">Hours</th>
+            <th></th>
         </tr>
 
         <tr class="accordion" v-for="activity in day.activities">
@@ -79,7 +84,7 @@ export default
                 </select>
             </td>
 
-            <td><input v-model="activity.people_present" class="single_character_cell" type="number" value="1"/></td>
+            <td class="medium_cell"><input v-model="activity.people_present" class="single_character_cell" type="number" value="1"/></td>
             <td><input v-on:input="day.calculate_hours()" step="0.5" class="single_character_cell" v-model="activity.time_spent" type="number" value="1.0"/></td>
             <td><button @click="day.delete_entry(activity)">X</button></td>
         </tr>
@@ -87,6 +92,11 @@ export default
 </table>
 
 <br></br>
-<button @click="construct_csv">Download</button>
+
+<ul class="horizontal_ul">
+    <li class="horizontal_li"><button @click="add_new_day()">Add New Day</button></li>
+    <li class="horizontal_li"><button @click="construct_csv()">Download CSV</button></li>
+</ul>
+
 
 </template>

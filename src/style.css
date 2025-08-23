@@ -3,17 +3,11 @@ table
     border-collapse: collapse;
 }
 
-th
-{
-    border-top: 1px solid #000000;
-
-}
-
 td, th
 {
+    border-collapse: collapse;
     padding: 8px;
-    border-bottom: 1px solid #000000;
-    border-right: 1px solid #000000;
+    border: 1px solid #000000;
 }
 
 tr:hover {
@@ -27,7 +21,7 @@ tr:hover {
 
 .medium_cell
 {
-    width: 6em;
+    width: 6.5em;
 }
 
 .wide_cell
