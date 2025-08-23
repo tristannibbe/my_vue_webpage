@@ -29,16 +29,7 @@ export default
             this.days_of_activities.push(new day_of_activities("2025-06-03"))
         },  
 
-        toggle_row()
-        {
-            console.log("toggle_row enter")
-            var elements = document.querySelectorAll(".accordion")
 
-            elements.forEach(function(element)
-            {
-                element.classList.toggle("collapse")   
-            })
-        }
     }
 }
 </script>
@@ -50,33 +41,43 @@ export default
 
     <div class="accordion_container" v-for="day in days_of_activities">
         <tr class="accordion_header">
-            <td><input type="date" v-model="day.date" placeholder="Enter Date"/></td>
-            <td class="medium_cell" @click="toggle_row"></td>
-            <td class="wide_cell" @click="toggle_row"></td>
-            <td class="single_character_cell" @click="toggle_row"></td>
-            <td class="medium_cell" @click="toggle_row"></td>
-            <td class="medium_cell" @click="toggle_row"><div>Total:{{ day.total_hours }}</div></td>
-            <td><button @click="day.add_entry()">+</button></td>
+            <td class="">
+                <input type="date" v-model="day.date" placeholder="Enter Date"/>
+            </td>
+            <td class="medium_cell"      @click="day.toggle_row()"></td>
+            <td class="wide_cell"        @click="day.toggle_row()"></td>
+            <td class="single_char_cell" @click="day.toggle_row()"></td>
+            <td class="medium_cell"      @click="day.toggle_row()"></td>
+            <td class="medium_cell"      @click="day.toggle_row()">
+                <div>Total:{{ day.total_hours }}</div>
+            </td>
+            <td class="">
+                <button @click="day.add_entry()">+</button>
+            </td>
         </tr>
 
-        <tr class="accordion">
-            <th></th>
-            <th class="medium_cell">Location</th>
-            <th class="wide_cell">Description</th>
-            <th>Code</th>
-            <th class="medium_cell">Participants</th>
-            <th class="medium_cell">Hours</th>
-            <th></th>
+        <tr class="accordion" v-if="day.display">
+            <th class=""             ></th>
+            <th class="medium_cell"  >Location</th>
+            <th class="wide_cell"    >Description</th>
+            <th class=""             >Code</th>
+            <th class="medium_cell"  >Participants</th>
+            <th class="medium_cell"  >Hours</th>
+            <th class=""             ></th>
         </tr>
 
-        <tr class="accordion" v-for="activity in day.activities">
+        <tr class="accordion" v-if="day.display" v-for="activity in day.activities">
             <td></td>
 
-            <td class="medium_cell"><input class="medium_cell" v-model="activity.location" placeholder="Enter City" /></td>
-            <td class="wide_cell"><input class="wide_cell" v-model="activity.description" placeholder="Enter Activity" /></td>
+            <td class="medium_cell">
+                <input class="medium_cell" v-model="activity.location" placeholder="Enter City" />
+            </td>
+            <td class="wide_cell">
+                <input class="wide_cell" v-model="activity.description" placeholder="Enter Activity" />
+            </td>
 
-            <td class="single_character_cell">
-                <select class="single_character_cell" v-model="activity.activity_code">
+            <td class="single_char_cell">
+                <select class="single_char_cell" v-model="activity.activity_code">
                     <option disabled value=""></option>
                     <option>A</option>
                     <option>B</option>
@@ -84,9 +85,15 @@ export default
                 </select>
             </td>
 
-            <td class="medium_cell"><input v-model="activity.people_present" class="single_character_cell" type="number" value="1"/></td>
-            <td><input v-on:input="day.calculate_hours()" step="0.5" class="single_character_cell" v-model="activity.time_spent" type="number" value="1.0"/></td>
-            <td><button @click="day.delete_entry(activity)">X</button></td>
+            <td class="medium_cell">
+                <input v-model="activity.people_present" class="single_char_cell" type="number" value="1"/>
+            </td>
+            <td>
+                <input v-on:input="day.calculate_hours()" step="0.5" class="single_char_cell" v-model="activity.time_spent" type="number"/>
+            </td>
+            <td>
+                <button @click="day.delete_entry(activity)">X</button>
+            </td>
         </tr>
     </div>
 </table>

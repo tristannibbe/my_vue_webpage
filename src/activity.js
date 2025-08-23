@@ -28,6 +28,7 @@ export class day_of_activities
     total_hours = 0;
     activities = []
     element = ""
+    display = true
 
     constructor (date)
     {
@@ -47,6 +48,18 @@ export class day_of_activities
             return item !== entry
         })
         this.calculate_hours()
+    }
+
+    toggle_row()
+    {
+        this.display = !this.display
+        //console.log("toggle_row enter")
+        //var elements = document.querySelectorAll(".accordion")
+
+        //elements.forEach(function(element)
+        //{
+        //    element.classList.toggle("collapse")   
+        //})
     }
 
     calculate_hours()
