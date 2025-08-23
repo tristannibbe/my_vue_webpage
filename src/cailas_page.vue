@@ -47,6 +47,7 @@ export default
             var encodedUri = encodeURI(csvContent);
             window.open(encodedUri);
         },
+        
         toggle_row()
         {
             console.log("toggle_row enter")
@@ -58,12 +59,6 @@ export default
                 element.classList.toggle("collapse")
                 
             })
-
-            //var elements = document.querySelectorAll(".expand_button")
-            //elements.forEach(function(element)
-            //{
-            //    element.textContent = ">"
-            //})
         }
     }
 }
@@ -73,28 +68,31 @@ export default
     <h1>Caila's Page</h1>
     <table>
         <tr>
-            <th>Description</th>
-            <th>Location</th>
+            <th>Date</th>
+            <th class="medium_cell">Location</th>
+            <th class="wide_cell">Description</th>
             <th>Code</th>
             <th>Participants</th>
-            <th>Hours</th>
+            <th class="single_character_cell">Hours</th>
             <th></th>
         </tr>
         
-        <tr>
-
-            <td><button class="expand_button" @click="toggle_row">Expand/Collapse</button></td>
+        <tr class="accordion_header">
             <td><input type="date" v-model="date" placeholder="Enter Date"/></td>
-            <td></td>
-            <td></td>
-            <td><div>Total:{{ total_hours }}</div></td>
+            <td @click="toggle_row"></td>
+            <td @click="toggle_row" class="wide_cell"></td>
+            <td @click="toggle_row" class="single_character_cell"></td>
+            <td @click="toggle_row"></td>
+            <td @click="toggle_row"><div>Total:{{ total_hours }}</div></td>
             <td><button @click="add_entry">+</button></td>
+
         </tr>
 
         <tr class="accordion" v-for="entry in activities">
+                <td></td>
 
-                <td><input v-model="entry.description" placeholder="Enter Activity" /></td>
-                <td><input v-model="entry.location" placeholder="Enter City" /></td>
+                <td class="medium_cell"><input class="medium_cell" v-model="entry.location" placeholder="Enter City" /></td>
+                <td class="wide_cell"><input class="wide_cell" v-model="entry.description" placeholder="Enter Activity" /></td>
 
                 <td class="single_character_cell">
                     <select class="single_character_cell" v-model="entry.activity_code">

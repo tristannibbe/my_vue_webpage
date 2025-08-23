@@ -25,6 +25,16 @@ tr:hover {
     width: 3.5em;
 }
 
+.medium_cell
+{
+    width: 6em;
+}
+
+.wide_cell
+{
+    width: 12em;
+}
+
 .horizontal_li
 {
     display: inline;
@@ -42,4 +52,9 @@ tr:hover {
 .accordion.collapse
 {
     display: none;
+}
+
+.accordion_header
+{
+    background-color: rgb(227, 233, 255);
 }
