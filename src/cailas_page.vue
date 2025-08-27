@@ -12,12 +12,11 @@ export default
     methods: {
         construct_csv()
         {
-            console.log("enter")
             let csvContent = "data:text/csv;charset=utf-8,";
 
-            for (let index = 0; index < this.activities.length; index++)
+            for (let index = 0; index < this.days_of_activities.length; index++)
             {
-                csvContent += this.activities[index].to_string() + "\r\n";
+                csvContent += this.days_of_activities[index].to_string();
             }
 
             var encodedUri = encodeURI(csvContent);
@@ -26,10 +25,11 @@ export default
 
         add_new_day()
         {
-            this.days_of_activities.push(new day_of_activities("2025-06-03"))
+            //TODO auto iterate to next date
+            var nextDate = "2025-06-03"
+            var newday = new day_of_activities(nextDate)
+            this.days_of_activities.push(newday)
         },  
-
-
     }
 }
 </script>
@@ -42,7 +42,7 @@ export default
     <div class="accordion_container" v-for="day in days_of_activities">
         <tr class="accordion_header">
             <td class="">
-                <input type="date" v-model="day.date" placeholder="Enter Date"/>
+                <input type="date" v-on:input="" v-model="day.date" placeholder="Enter Date"/>
             </td>
             <td class="medium_cell"      @click="day.toggle_row()"></td>
             <td class="wide_cell"        @click="day.toggle_row()"></td>
@@ -86,10 +86,10 @@ export default
             </td>
 
             <td class="medium_cell">
-                <input v-model="activity.people_present" class="single_char_cell" type="number" value="1"/>
+                <input v-model="activity.people_present" class="single_char_cell" min="1" type="number" value="1"/>
             </td>
             <td>
-                <input v-on:input="day.calculate_hours()" step="0.5" class="single_char_cell" v-model="activity.time_spent" type="number"/>
+                <input v-on:input="day.calculate_hours()" min="0" max ="10" step="0.5" class="single_char_cell" v-model="activity.time_spent" type="number"/>
             </td>
             <td>
                 <button @click="day.delete_entry(activity)">X</button>

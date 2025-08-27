@@ -1,20 +1,19 @@
 export class activity
 {
-    date = ""
-    description = ""
-    location = ""
+    description = "Generic Description"
+    location = "Oxnard"
     activity_code = ""
     people_present = 1
     time_spent = 1
 
-    constructor(date, description, location, activity_code, people_present, time_spent)
+    constructor()
     {
-        this.date = date 
     }
 
+
+
     to_string() {
-        return this.date + "," +
-                this.description + "," + 
+        return this.description + "," + 
                 this.location + "," +
                 this.activity_code + "," + 
                 this.people_present + "," +
@@ -29,11 +28,12 @@ export class day_of_activities
     activities = []
     element = ""
     display = true
+    line_return = "\r\n"
 
     constructor (date)
     {
         this.date = date
-        this.activities.push(new activity(this.date))
+        this.add_entry()
     }
 
     add_entry() {
@@ -53,13 +53,6 @@ export class day_of_activities
     toggle_row()
     {
         this.display = !this.display
-        //console.log("toggle_row enter")
-        //var elements = document.querySelectorAll(".accordion")
-
-        //elements.forEach(function(element)
-        //{
-        //    element.classList.toggle("collapse")   
-        //})
     }
 
     calculate_hours()
@@ -68,5 +61,26 @@ export class day_of_activities
         for (let index = 0; index < this.activities.length; index++) {
             this.total_hours += this.activities[index].time_spent;
         }
+    }
+
+    get_date_string_format()
+    {
+        return this.date.getMonth() + "/" + this.date.getDay() + "/" + this.date.getFullYear()
+    }
+
+    update_date()
+    {
+        this.date = new Date(this.date_str)
+    }
+
+    to_string() {
+        let csvContent = "";
+
+        for (let index = 0; index < this.activities.length; index++)
+        {
+            csvContent += this.date + "," + this.activities[index].to_string() + this.line_return;
+        }
+
+        return csvContent
     }
 }
