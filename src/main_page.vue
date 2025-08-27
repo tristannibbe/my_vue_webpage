@@ -12,7 +12,8 @@
         },
         methods: {
             get_random_insult() {
-                var insults = Array("bitch","fucker","cockwomble","douchebag","squidtard","dogboy","asslicker");
+                var insults = Array(":\"(");
+                //var insults = Array("bitch","fucker","cockwomble","douchebag","squidtard","dogboy","asslicker");
                 return insults[Math.floor(Math.random()*insults.length)];
             }
         }
