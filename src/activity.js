@@ -79,7 +79,11 @@ export class day_of_activities
 
     get_date_string_format()
     {
-        return this.date.getMonth() + "/" + this.date.getDay() + "/" + this.date.getFullYear()
+        let dateSplit = this.date.split("-")
+        var year = dateSplit[0]
+        var month = dateSplit[1]
+        var day = dateSplit[2]
+        return month + "/" + day + "/" + year.substring(2)
     }
 
     update_date()
@@ -92,7 +96,7 @@ export class day_of_activities
 
         for (let index = 0; index < this.activities.length; index++)
         {
-            csvContent += this.date + "," + this.activities[index].to_string() + this.line_return;
+            csvContent += this.get_date_string_format() + "," + this.activities[index].to_string() + this.line_return;
         }
 
         return csvContent
