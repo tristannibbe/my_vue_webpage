@@ -84,3 +84,38 @@ export class day_of_activities
         return csvContent
     }
 }
+
+export class ActivityCodeList {
+    code_list = []
+
+    constructor()
+    {
+        this.code_list.push(new ActivityCode("SARB", "S"))
+        this.code_list.push(new ActivityCode("Meeting", "M"))
+        this.code_list.push(new ActivityCode("Training", "T"))
+        this.code_list.push(new ActivityCode("Outreach Event", "OE"))
+        this.code_list.push(new ActivityCode("Street Outreach", "SO"))
+        this.code_list.push(new ActivityCode("Youth Event", "YE"))
+        this.code_list.push(new ActivityCode("Case Management", "CM"))
+        this.code_list.push(new ActivityCode("Life Skills", "LS"))
+        this.code_list.push(new ActivityCode("Admin", "A"))
+        this.code_list.push(new ActivityCode("Social Media", "SM"))
+        this.code_list.push(new ActivityCode("Other", "OT"))
+    }
+}
+
+class ActivityCode{
+    name = ""
+    code = ""
+
+    constructor(name, code)
+    {
+        this.name = name
+        this.code = code
+    }
+
+    get_full_name()
+    {
+        return this.name + " ("  + this.code + ")"
+    }
+}

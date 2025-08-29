@@ -1,5 +1,5 @@
 <script>
-import { activity, day_of_activities } from './activity'
+import { activity, day_of_activities, ActivityCodeList} from './activity'
 
 export default
 {
@@ -7,6 +7,7 @@ export default
     {
         return{
             days_of_activities: [new day_of_activities("2025-06-01"), new day_of_activities("2025-06-02")],
+            code_list: new ActivityCodeList(),
         }
     },
     methods: {
@@ -79,9 +80,7 @@ export default
             <td class="single_char_cell">
                 <select class="single_char_cell" v-model="activity.activity_code">
                     <option disabled value=""></option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
+                    <option v-for="a_code in code_list.code_list">{{a_code.get_full_name()}}</option>
                 </select>
             </td>
 
