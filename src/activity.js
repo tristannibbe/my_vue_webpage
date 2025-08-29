@@ -10,12 +10,26 @@ export class activity
     {
     }
 
-
+    get_activity_code_str()
+    {
+        var code_str = "";
+        ActivityCodeList.forEach((code) =>{
+            if (code.code == this.activity_code.code)
+            {
+                code_str += this.activity_code.code + ","
+            }
+            else
+            {
+                code_str += ","
+            }
+        });
+        return code_str
+    }
 
     to_string() {
         return this.description + "," + 
                 this.location + "," +
-                this.activity_code + "," + 
+                this.get_activity_code_str() + 
                 this.people_present + "," +
                 this.time_spent + ","
     }
@@ -85,25 +99,6 @@ export class day_of_activities
     }
 }
 
-export class ActivityCodeList {
-    code_list = []
-
-    constructor()
-    {
-        this.code_list.push(new ActivityCode("SARB", "S"))
-        this.code_list.push(new ActivityCode("Meeting", "M"))
-        this.code_list.push(new ActivityCode("Training", "T"))
-        this.code_list.push(new ActivityCode("Outreach Event", "OE"))
-        this.code_list.push(new ActivityCode("Street Outreach", "SO"))
-        this.code_list.push(new ActivityCode("Youth Event", "YE"))
-        this.code_list.push(new ActivityCode("Case Management", "CM"))
-        this.code_list.push(new ActivityCode("Life Skills", "LS"))
-        this.code_list.push(new ActivityCode("Admin", "A"))
-        this.code_list.push(new ActivityCode("Social Media", "SM"))
-        this.code_list.push(new ActivityCode("Other", "OT"))
-    }
-}
-
 class ActivityCode{
     name = ""
     code = ""
@@ -119,3 +114,20 @@ class ActivityCode{
         return this.name + " ("  + this.code + ")"
     }
 }
+
+export const ActivityCodeList =
+[    
+    new ActivityCode("SARB", "S"),
+    new ActivityCode("Meeting", "M"),
+    new ActivityCode("Training", "T"),
+    new ActivityCode("Outreach Event", "OE"),
+    new ActivityCode("Street Outreach", "SO"),
+    new ActivityCode("Youth Event", "YE"),
+    new ActivityCode("Case Management", "CM"),
+    new ActivityCode("Life Skills", "LS"),
+    new ActivityCode("Admin", "A"),
+    new ActivityCode("Social Media", "SM"),
+    new ActivityCode("Other", "OT"),
+]
+
+
