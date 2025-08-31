@@ -1,6 +1,8 @@
 table
 {
     border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td, th
@@ -11,7 +13,7 @@ td, th
 }
 
 tr:hover {
-    background-color: #D6EEEE;
+    background-color: #e4e4e4;
 } 
 
 .single_char_cell
@@ -50,11 +52,29 @@ tr:hover {
 
 .accordion_header
 {
-    background-color: rgb(227, 233, 255);
+    background-color: #6e6e6e;
+    color: #ececec;
+    text-align: center;
 }
+
+.accordion_header:hover {
+    background-color: #bbbaba;
+
+} 
 
 .main_page
 {
-    background-color: #eeeade;
+    background-color: #e4e4e4ad;
+}
 
+.page_header
+{
+    text-align: center;
+    background-color: #585858;
+    color: #ffffff;
+    border: #000000;
+    border-width: .1em;
+    border-style:solid;
+    border-radius: .2em;
+    padding: .25em;
 }

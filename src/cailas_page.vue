@@ -36,11 +36,11 @@ export default
 </script>
 
 <template>
-<h1>Caila's Page</h1>
+<h1 class="page_header">Activity Log</h1>
 <table>
 
 
-    <div class="accordion_container" v-for="day in days_of_activities">
+    <tbody class="accordion_container" v-for="day in days_of_activities">
         <tr class="accordion_header">
             <td class="">
                 <input type="date" v-on:input="" v-model="day.date" placeholder="Enter Date"/>
@@ -94,7 +94,7 @@ export default
                 <button @click="day.delete_entry(activity)">X</button>
             </td>
         </tr>
-    </div>
+    </tbody>
 </table>
 
 <br></br>
