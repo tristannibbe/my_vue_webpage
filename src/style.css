@@ -78,3 +78,10 @@ tr:hover {
     border-radius: .2em;
     padding: .25em;
 }
+
+.table_button_bar
+{
+    background-color: #6e6e6e;
+    color: #ececec;
+    text-align: center;
+}

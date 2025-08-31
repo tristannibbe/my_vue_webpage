@@ -95,14 +95,18 @@ export default
             </td>
         </tr>
     </tbody>
+    <tr class="table_button_bar">
+        <td class=""><button @click="add_new_day()">Add New Day</button></td>
+        <td class=""><button @click="construct_csv()">Download CSV</button></td>
+    </tr>
 </table>
 
 <br></br>
 
-<ul class="horizontal_ul">
+<!--<ul class="horizontal_ul">
     <li class="horizontal_li"><button @click="add_new_day()">Add New Day</button></li>
     <li class="horizontal_li"><button @click="construct_csv()">Download CSV</button></li>
 </ul>
-
+-->
 
 </template>
