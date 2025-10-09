@@ -1,8 +1,10 @@
-###To run locally
-npm run dev 
+### To run locally
 
+```sh
+npm run dev
+```
 
-###Netlify
+### Netlify
 url: https://tnibbz-webpage.netlify.app/
 
 - To avoid generating a branch or production deploy for a commit pushed directly to a branch, add [skip ci] or [skip netlify] anywhere in the Git commit message.
