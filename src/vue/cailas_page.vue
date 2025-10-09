@@ -1,5 +1,5 @@
 <script>
-import {day_of_activities, ActivityCodeList} from './activity'
+import {day_of_activities, ActivityCodeList} from '../activity'
 
 export default
 {
@@ -104,11 +104,5 @@ export default
 </table>
 
 <br></br>
-
-<!--<ul class="horizontal_ul">
-    <li class="horizontal_li"><button @click="add_new_day()">Add New Day</button></li>
-    <li class="horizontal_li"><button @click="construct_csv()">Download CSV</button></li>
-</ul>
--->
 
 </template>
