@@ -41,5 +41,5 @@
     <h4 v-if="count>=30">Why do you persist?</h4>
 
     <h4 v-if="count>=40">FINE!! Here he is!</h4>
-    <img src="./cat_in_hat.jpg" alt="Italian Trulli" v-if="count>=40">
+    <img src="./img/cat_in_hat.jpg" alt="Italian Trulli" v-if="count>=40">
 </template>
