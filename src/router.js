@@ -7,7 +7,7 @@ import Testing_Page from './vue/testing_page.vue'
 const routes = [
     { path: '/', component: Main_Page },
     { path: '/cailas_page', component: Cailas_Page },
-//    { path: '/testing_page', component: Testing_Page },
+    { path: '/testing_page', component: Testing_Page },
 ]
   
 const router = createRouter
