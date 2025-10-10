@@ -113,6 +113,7 @@ class DateWrapper
 
     get_raw()
     {
+        //TODO clean this up
         //format it like YYYY-MM-DD so html picker can understand
         var day = ("0" + this.date.getDate()).slice(-2)
         var month = ("0" + (this.date.getMonth() + 1)).slice(-2)

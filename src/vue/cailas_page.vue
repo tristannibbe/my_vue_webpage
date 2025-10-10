@@ -27,7 +27,12 @@ export default
         add_new_day()
         {
             //TODO auto iterate to next date
-            var newday = new day_of_activities(2025, 5, 3)
+            var most_recent_date = this.days_of_activities[this.days_of_activities.length - 1].date.date
+            var year = most_recent_date.getFullYear()
+            var month = most_recent_date.getMonth()
+            var day = most_recent_date.getDate() + 1
+
+            var newday = new day_of_activities(year, month, day)
             this.days_of_activities.push(newday)
         },  
     }
