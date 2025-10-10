@@ -37,16 +37,15 @@ export class activity
 
 export class day_of_activities
 {
-    date = ""
     total_hours = 0;
     activities = []
-    element = ""
     display = true
     line_return = "\r\n"
+    date = ""
 
-    constructor (date)
+    constructor (year, month, day)
     {
-        this.date = date
+        this.date = new DateWrapper(year, month, day)
         this.add_entry()
     }
 
@@ -77,33 +76,63 @@ export class day_of_activities
         }
     }
 
-    get_date_string_format()
+    update_date(event)
     {
-        let dateSplit = this.date.split("-")
-        var year = dateSplit[0]
-        var month = dateSplit[1]
-        var day = dateSplit[2]
-        return month + "/" + day + "/" + year.substring(2)
+        this.date.update(event.target.valueAsDate)
+        console.log(event.target.valueAsDate)
     }
 
-    update_date()
+    to_string()
     {
-        this.date = new Date(this.date_str)
-    }
-
-    to_string() {
         let csvContent = "";
 
         for (let index = 0; index < this.activities.length; index++)
         {
-            csvContent += this.get_date_string_format() + "," + this.activities[index].to_string() + this.line_return;
+            csvContent += this.date.get_str() + "," + this.activities[index].to_string() + this.line_return;
         }
 
         return csvContent
     }
 }
 
-class ActivityCode{
+class DateWrapper
+{
+    date = new Date()
+    date_bind = ""
+
+    constructor(year, month, day)
+    {
+        this.date = new Date(year, month, day)
+        this.date_bind = this.get_raw()
+    }
+
+    update(date_val)
+    {
+        this.date = new Date(date_val)
+    }
+
+    get_raw()
+    {
+        //format it like YYYY-MM-DD so html picker can understand
+        var day = ("0" + this.date.getDate()).slice(-2)
+        var month = ("0" + (this.date.getMonth() + 1)).slice(-2)
+        return this.date.getFullYear() + "-" + (month) + "-" + (day)
+    }
+
+    get_str()
+    {
+        var year = this.date.getFullYear()
+        //months are 0 indexed
+        var month = this.date.getMonth() + 1
+        var day = this.date.getDate()
+
+        //format it like MM/DD/YYYY for output
+        return month + "/" + day + "/" + year.toString().substring(2)
+    }
+}
+
+class ActivityCode
+{
     name = ""
     code = ""
 

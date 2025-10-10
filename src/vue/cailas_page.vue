@@ -6,7 +6,7 @@ export default
     data()
     {
         return{
-            days_of_activities: [new day_of_activities("2025-06-01"), new day_of_activities("2025-06-02")],
+            days_of_activities: [ new day_of_activities(2025, 5, 1), new day_of_activities(2025, 5, 2)],
             ActivityCodeList: ActivityCodeList
         }
     },
@@ -27,8 +27,7 @@ export default
         add_new_day()
         {
             //TODO auto iterate to next date
-            var nextDate = "2025-06-03"
-            var newday = new day_of_activities(nextDate)
+            var newday = new day_of_activities(2025, 5, 3)
             this.days_of_activities.push(newday)
         },  
     }
@@ -43,7 +42,7 @@ export default
     <tbody class="accordion_container" v-for="day in days_of_activities">
         <tr class="accordion_header">
             <td class="">
-                <input type="date" v-on:input="" v-model="day.date" placeholder="Enter Date"/>
+                <input type="date" v-on:input="day.update_date($event)" v-model="day.date.date_bind" placeholder="Enter Date"/>
             </td>
             <td class="medium_cell"      @click="day.toggle_row()"></td>
             <td class="wide_cell"        @click="day.toggle_row()"></td>
