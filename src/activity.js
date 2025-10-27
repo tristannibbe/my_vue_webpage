@@ -79,7 +79,6 @@ export class day_of_activities
     update_date(event)
     {
         this.date.update(event.target.valueAsDate)
-        console.log(event.target.valueAsDate)
     }
 
     to_string()
@@ -102,13 +101,18 @@ class DateWrapper
 
     constructor(year, month, day)
     {
-        this.date = new Date(year, month, day)
+        //pass 17 as hour to make sure we're always in the middle of the day
+        this.date = new Date(year, month, day, 17)
         this.date_bind = this.get_raw()
     }
 
     update(date_val)
     {
-        this.date = new Date(date_val)
+        console.log(date_val)
+        //pass 17 as hour to make sure we're always in the middle of the day
+        //TODO figure out why date coming from picker is 1 day behind
+        this.date = new Date(date_val.getFullYear(), date_val.getMonth(), date_val.getDate() + 1, 17)
+        console.log(this.date)
     }
 
     get_raw()
